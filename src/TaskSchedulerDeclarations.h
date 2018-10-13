@@ -125,6 +125,7 @@ class Scheduler;
 class Task {
   friend class Scheduler;
   public:
+    INLINE Task() {};
     INLINE Task(unsigned long aInterval=0, long aIterations=0, TaskCallback aCallback=NULL, Scheduler* aScheduler=NULL, bool aEnable=false, TaskOnEnable aOnEnable=NULL, TaskOnDisable aOnDisable=NULL);
 
 #ifdef _TASK_STATUS_REQUEST
