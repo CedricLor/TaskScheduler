@@ -215,7 +215,7 @@ extern "C" {
 /** Constructor, uses default values for the parameters
  * so could be called with no parameters.
  */
-Task::Task( unsigned long aInterval, long aIterations, TaskCallback aCallback, Scheduler* aScheduler, bool aEnable, TaskOnEnable aOnEnable, TaskOnDisable aOnDisable ) {
+Task::Task( Scheduler* aScheduler, unsigned long aInterval, long aIterations, TaskCallback aCallback, bool aEnable, TaskOnEnable aOnEnable, TaskOnDisable aOnDisable ) {
     reset();
     set(aInterval, aIterations, aCallback, aOnEnable, aOnDisable);
     if (aScheduler) aScheduler->addTask(*this);
@@ -243,7 +243,7 @@ Task::~Task() {
 /** Constructor with reduced parameter list for tasks created for
  *  StatusRequest only triggering (always immediate and only 1 iteration)
  */
-Task::Task( TaskCallback aCallback, Scheduler* aScheduler, TaskOnEnable aOnEnable, TaskOnDisable aOnDisable ) {
+Task::Task( Scheduler* aScheduler, TaskCallback aCallback, TaskOnEnable aOnEnable, TaskOnDisable aOnDisable ) {
     reset();
     set(TASK_IMMEDIATE, TASK_ONCE, aCallback, aOnEnable, aOnDisable);
     if (aScheduler) aScheduler->addTask(*this);
